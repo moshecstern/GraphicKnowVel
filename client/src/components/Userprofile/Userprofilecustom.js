@@ -13,6 +13,7 @@ import {
     Button,
     ListItemAvatar,
     Avatar,
+    Alert,
     ListItemText
   } from "@material-ui/core";
   import Backdrop from '@material-ui/core/Backdrop';
@@ -132,6 +133,7 @@ function savecustomprofile(){
     fullname: myfullname,
     nickname: mynickname
     },{headers: { Authorization: `JWT ${accessString}` }} )
+    .then(alert("Saved to your profile!"))
     .then(res => randomtext())
     .catch(err => console.log(err));
   }else {
@@ -144,9 +146,11 @@ function savecustomprofile(){
     fullname: jwtDecode(accessString).username,
     nickname: mynickname
   },{headers: { Authorization: `JWT ${accessString}` }} )
+  .then(alert("Saved to your profile!"))
   .then(res => randomtext())
   .catch(err => console.log(err));
 }
+handleClose()
 }
 function deleteprofile(id){
   console.log(id)
@@ -160,13 +164,13 @@ function deleteprofile(id){
   return (
     <>
       
-    <div>
+    {/* <div> */}
 <h2>User Profile</h2>
 <Button onClick={opencustomprofile}>Create Profile</Button>
 {!myuser ? null : (
   <div> 
 {myuser.map(user => (
-    <Card className={classes.card}>
+    <Card className={classes.card} key={user._id}>
       <CardHeader
         avatar={
           <Avatar aria-label="book" className={classes.avatar}>
@@ -238,14 +242,14 @@ function deleteprofile(id){
     ))}
 </div>
     )}
-    {myuser ? null : (
+    {/* {myuser ? null : (
       function(){
 
       setuserprofile(false)
       handleOpen()
       }
       
-    )}
+    )} */}
     {/* {!editUserprofile ? false : ( */}
         <Modal
                 // aria-labelledby="transition-modal-title"
@@ -423,7 +427,7 @@ function deleteprofile(id){
     </div>
     </Fade>
         </Modal>
-    </div>
+    {/* </div> */}
       </>
   );
 }

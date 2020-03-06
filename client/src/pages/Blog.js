@@ -1,33 +1,38 @@
 import React, { useState } from "react";
-import REACT_APP_googlebooks_APP_API_KEY from "dotenv";
-import Superheroapi from "../components/Superheroapi";
-import { List, ListItem } from "../components/List";
-import Linkpage from "../components/Linkpage";
-import Userprofileco from "../components/Userprofile";
+// import REACT_APP_googlebooks_APP_API_KEY from "dotenv";
+// import Superheroapi from "../components/Superheroapi";
+// import { List, ListItem } from "../components/List";
+// import Linkpage from "../components/Linkpage";
+// import Userprofileco from "../components/Userprofile";
 import SeriesAll from "../components/SeriesAll";
 import Allblogs from "../components/blog/Allblogs"
 import Notes from "../components/Notes"
-import YelpAPI from "../components/YelpAPI";
-import DisplayallSeries from "../components/DisplayallSeries"
-import Imageuploader from "../components/imageuploader";
+import VolumeDB from "../components/VolumesDB"
+// import YelpAPI from "../components/YelpAPI";
+// import DisplayallSeries from "../components/DisplayallSeries"
+// import Imageuploader from "../components/imageuploader";
 import Cookies from 'js-cookie';
-import {
-  Grid,
-  Typography,
-  Button,
-  ListItemAvatar,
-  Avatar,
-  ListItemText,
-} from "@material-ui/core";
-import useAxios from "axios-hooks";
-import Axios from "axios";
+// import {
+//   Grid,
+//   Typography,
+//   Button,
+//   ListItemAvatar,
+//   Avatar,
+//   ListItemText,
+// } from "@material-ui/core";
+// import useAxios from "axios-hooks";
+// import Axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
-import FolderIcon from "@material-ui/icons/Folder";
-import Modal from "@material-ui/core/Modal";
-import MemHighScores from "../components/Memorygamemain/HighScore"
-import TriviaScores from "../components/GameTrivia/UserHighScore"
-import ProfileCustom from "../components/Userprofile/Userprofilecustom"
+// import FolderIcon from "@material-ui/icons/Folder";
+// import Modal from "@material-ui/core/Modal";
+// import MemHighScores from "../components/Memorygamemain/HighScore"
+// import TriviaScores from "../components/GameTrivia/UserHighScore"
+// import ProfileCustom from "../components/Userprofile/Userprofilecustom"
 // import Userblog from "../components/"
+import YelpAPI from "../components/YelpAPI"
+import SeriesScraper from "../components/Comicvineapi/seriesscraper"
+import YoutubeAPI from "../components/Youtubeapi"
+
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -83,6 +88,7 @@ const Blog = props => {
 }
   return (
     <>
+    <div>
 {/* <Imageuploader /> */}
       {/* <YelpAPI /> */}
 
@@ -106,36 +112,19 @@ const Blog = props => {
   alignItems="center"
       >
         <Grid item xs> */}
+        {/* <SeriesScraper /> */}
+{/* <YoutubeAPI /> */}
+
+{/* <VolumeDB /> */}
+
+        {/* <YelpAPI /> */}
         <Allblogs />
         <br />
         <br />
-        <Notes />
-        {/* </Grid>
-      </Grid> */}
 
-
-
- {/* </Grid> */}
-{/* <Grid
-  // container
-  direction="column"
-  justify="center"
-  alignItems="center"
-> */}
-{/* <TriviaScores /> <MemHighScores /> <Userblog /> */}
-{/* add blog here */}
-{/* // </Grid> */}
-{/* <Grid
-  // container
-  direction="column"
-  justify="center"
-  alignItems="flex-end"
-> */}
-{/* <Userprofileco /> */}
-{/* // </Grid> */}
-{/* // </Grid> */}
 <br />
-    <SeriesAll />
+        <Notes />
+        </div>
     </>
   );
 };

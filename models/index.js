@@ -10,8 +10,13 @@ module.exports = {
  userbooksloaned: require("./userbooksloaned"),
   userblog: require("./userblog"),
   userfavblogs: require("./userfavblogs"),
-
-  // userfavtv: require("./"),
+  comicvinevolumes: require("./comicvinevolumes"),
+  products: require("./products"),
+  productsbought: require("./productsbought"),
+  wishlist: require("./wishlist"),
+  mycart: require("./mycart"),
+  userfavtv: require("./userfavtv"),
+  favcharacters: require("./favcharacters")
   // userfavmovies: require("./"),
   // userfavnews: require("./"),
 };

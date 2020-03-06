@@ -52,17 +52,23 @@ import "./login.css"
   
   {/* <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> */}
             <form>
-            <div class="form-group">
-            Username: <input type="text" class="form-control" name="username" value={username} onChange={handleChangeUsername} />
+            <div className="form-group">
+            Username: <input type="text" className="form-control" name="username" value={username} onChange={handleChangeUsername} />
             </div>
-            <div class="form-group">
-            Password: <input type="password" class="form-control" name="password" value={password} onChange={handleChangePassword} />
+            <div className="form-group">
+            Password: <input type="password" className="form-control" name="password" value={password} onChange={handleChangePassword} />
             </div>
-            <button type="submit" class="btn btn-success" onClick={loginUser}>Login</button>
+            <button type="submit" className="btn btn-success" onClick={loginUser}>Login</button>
             <NavLink to="/signup"> Signup </NavLink>
         </form>
         <hr className="my-4"/>
-  <p className="text-center">If you would like to sign in as a guest please use username: guest, password: password</p>
+  <ul>
+    <li>Search & save characters, teams, places, and graphic novels</li>
+    <li>Find Comic related Yelp businesses & events near you</li>
+    <li>Create your own profile & blogs</li>
+    <li>Play comic themed games & find comic related news</li>
+  </ul>
+  <p className="text-center">Just Browse => Username: guest, password: password</p>
   
 </div>
         {/* <div className="google-btn-container">

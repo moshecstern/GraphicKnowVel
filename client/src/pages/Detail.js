@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-import REACT_APP_googlebooks_APP_API_KEY from "dotenv";
-import Superheroapi from "../components/Superheroapi";
-import { List, ListItem } from "../components/List";
-import Linkpage from "../components/Linkpage";
+// import REACT_APP_googlebooks_APP_API_KEY from "dotenv";
+// import Superheroapi from "../components/Superheroapi";
+// import { List, ListItem } from "../components/List";
+// import Linkpage from "../components/Linkpage";
 import Comicbookvineapi from "../components/Comicvineapi";
 import DisplayallSeries from "../components/DisplayallSeries"
+import ComicbookvineapiSeries from "../components/Comicvineapi/serieslist";
+import ComicbookvineapiStoryArcs from "../components/Comicvineapi/storyarcs";
+import Comicbookvineapiteams from "../components/Comicvineapi/teams";
+import Comicbookvineapivolumes from "../components/Comicvineapi/volumes";
+import Comicbookvineapiconcepts from "../components/Comicvineapi/concepts";
+import Omdbmovies from "../components/Omdbapi/MoviebyName"
+import CardAPI from "../components/Comicvineapi/CardAPI"
 import Cookies from 'js-cookie';
 import {
   Grid,
@@ -19,6 +26,11 @@ import Axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import FolderIcon from "@material-ui/icons/Folder";
 import Modal from "@material-ui/core/Modal";
+import VolumeDB from "../components/VolumesDB"
+import YelpAPI from "../components/YelpAPI"
+import YoutubeAPI from "../components/Youtubeapi"
+import Locations from "../components/Comicvineapi/Locations"
+// import CharactersBoard from "../components/CharactersBoard";
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -67,109 +79,57 @@ const Detail = props => {
     SetLogIn(true);
   }
 }
+const [selectedDashboard, setSelectedDashboard] = useState('volumes')
   return (
     <>
-    {/* <Linkpage props={props}>{props}</Linkpage> */}
+   {/* <Linkpage props={props}>{props}</Linkpage> */}
       {/* <Superheroapi props={props}>{props}</Superheroapi> */}
- <DisplayallSeries props={props}>{props}</DisplayallSeries>
-      <Comicbookvineapi props={props}>{props}</Comicbookvineapi>
+  
  
-      {/* <Grid container spacing={2}>
-        <Grid item xs>
-          <Typography variant="h3" className={classes.title}>
-            Character name: {props.match.params.name} 
-          </Typography>
-          <List dense className={classes.root}>
-          {console.log(series)}
-          {console.log("?!!?!?!?!??!?!?!?!?!?")}
-            {series.map(item => (
-              
-              <ListItem key={item._id}>
-                <ListItemAvatar>
-                  <Avatar>
-                    <FolderIcon
-                      onClick={() => showvolumes(item._id, series, item.name)}
-                    />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText
-                  primary={`Series Era: ${item.series}`}
-                  secondary={`Series Line: ${item.name}`}
-                />
-              </ListItem>
-            ))}
-          </List>
-        </Grid>
-        <Grid item>
-          {!seriesid ? null : (
-            <div className={classes.volumes}>
-              <Typography variant="h3" className={classes.title}>
-                Volumes
-              </Typography>
-              <List dense>
-                {seriesid.map(vol => (
-                  <div className={classes.demo}>
-                    <ListItem key={vol}>
-                      <ListItemText
-                        primary={
-                          <Typography
-                            component="span"
-                            variant="body2"
-                            className={classes.inline}
-                            color="textPrimary"
-                          >
-                            {vol}
-                          </Typography>
-                        }
-                      />
-                      <Button
-                        onClick={() =>
-                          showvolumeinformation(vol, currentname, currentSeries)
-                        }
-                      >
-                        Get Volumes Information
-                      </Button>
-                    </ListItem>
-                  </div>
-                ))}
-              </List>
-            </div>
-          )}
-        </Grid>
-      </Grid>
+ {/* <br /> */}
+ <div className="text-center">
+ <div><h2>Find More by clicking below</h2></div>
+<Button onClick={(e)=> setSelectedDashboard("character")}>Characters</Button>
+<Button onClick={(e)=> setSelectedDashboard("volumes")}>Volumes</Button>
+<Button onClick={(e)=> setSelectedDashboard("teams")}>Teams</Button>
+<Button onClick={(e)=> setSelectedDashboard("storyarcs")}>Story Arcs</Button>
+{/* <Button onClick={(e)=> setSelectedDashboard("series")}>Series</Button> */}
 
-      {!currentsearchresults ? null : (
-        <Modal
-          aria-labelledby="volumes-modal-title"
-          aria-describedby="volumes-modal-description"
-          open={open}
-          onClose={handleClose}
-        >
-          <div style={modalStyle} className={classes.paper}>
-            <List>
-              {currentsearchresults.items.map(result => (
-                <ListItem key={result}>
-                  {console.log(result)}
-                  <div>Title: {result.volumeInfo.title}: {result.volumeInfo.subtitle}</div>
-                  {!result.volumeInfo.imageLinks ? null : (
-                    <div>
-                      <img src={result.volumeInfo.imageLinks.thumbnail}></img>
-                    </div>
-                  )}
-                  <div>
-                    <a href={result.volumeInfo.previewLink} target="_blank">
-                      Google Books Link
-                    </a>
-                  </div>
-                  <div>Authors: {result.volumeInfo.authors}</div>
-                  <div>Published Date: {result.volumeInfo.publishedDate}</div>
-                  <div>Description: {result.volumeInfo.description}</div>
-                </ListItem>
-              ))}
-            </List>
-          </div>
-        </Modal>
-      )} */}
+<Button onClick={(e)=> setSelectedDashboard("concepts")}>Concepts</Button>
+<Button onClick={(e)=> setSelectedDashboard("locations")}>Locations</Button>
+<Button onClick={(e)=> setSelectedDashboard("tvseries")}>TV Series</Button>
+{/* <Button onClick={(e)=> setSelectedDashboard("issues")}>Issues</Button> */}
+{/* <Button onClick={(e)=> setSelectedDashboard("videos")}>Videos</Button> */}
+
+{/* <Button onClick={(e)=> setSelectedDashboard("movies")}>Movies</Button> */}
+<Button onClick={(e)=> setSelectedDashboard("movies")}>Movies</Button>
+{/* <Button onClick={(e)=> setSelectedDashboard("Yelpcomicshops")}>Local Comics & Events</Button> */}
+        <Button onClick={(e)=> setSelectedDashboard("Youtube")}>Youtube</Button>
+        <Button onClick={(e)=> setSelectedDashboard("VolumesByDB")}>Search All Series</Button>
+</div>
+{selectedDashboard === 'character' && <Comicbookvineapi props={props} myurl={"characters"}>{props}</Comicbookvineapi>}
+{selectedDashboard === 'volumes' && <Comicbookvineapivolumes props={props}>{props}</Comicbookvineapivolumes>}
+{/* {selectedDashboard === 'volumes' && <CardAPI props={props}
+title={"Volumes"}
+url={"userbooks"}
+>{props}</CardAPI>} */}
+
+
+{selectedDashboard === 'teams' &&   <Comicbookvineapiteams props={props}>{props}</Comicbookvineapiteams> }
+{selectedDashboard === 'tvseries' &&  <ComicbookvineapiSeries props={props}>{props}</ComicbookvineapiSeries>  }
+{selectedDashboard === 'storyarcs' &&   <ComicbookvineapiStoryArcs props={props}>{props}</ComicbookvineapiStoryArcs> }
+{selectedDashboard === 'series' &&   <DisplayallSeries props={props}>{props}</DisplayallSeries> }
+
+{selectedDashboard === 'concepts' &&  <Comicbookvineapiconcepts props={props}>{props}</Comicbookvineapiconcepts>  }
+{selectedDashboard === 'locations' &&  <Locations props={props}>{props}></Locations> }
+{/* {selectedDashboard === 'issues' &&   } */}
+{/* {selectedDashboard === 'videos' &&   } */}
+
+{selectedDashboard === 'movies' && <Omdbmovies props={props}>{props}</Omdbmovies>  }
+{selectedDashboard === 'Yelpcomicshops' && <YelpAPI props={props}>{props}</YelpAPI>}
+{selectedDashboard === 'VolumesByDB' && <VolumeDB props={props}>{props}</VolumeDB>}
+{selectedDashboard === 'Youtube' && <YoutubeAPI props={props} search={props.match.params.name}>{props}</YoutubeAPI>}
+
     </>
   );
 };
